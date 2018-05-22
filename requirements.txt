@@ -1,0 +1,4 @@
+python-dotenv
+pedidos == 2.18.4
+datetime == 4.2
+python-wordpress-xmlrpc
