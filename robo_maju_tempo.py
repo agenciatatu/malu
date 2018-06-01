@@ -7,12 +7,10 @@
 def robo_tempo(): 
     import requests     
     import os
-    from dotenv import find_dotenv, load_dotenv
-    load_dotenv(find_dotenv())
 
-    token = os.environ.get('TOKEN_CLIMATEMPO')
-    login = os.environ.get('LOGIN_AT')                            
-    senha = os.environ.get('SENHA_AT')
+    token = # token de acesso do Climatempo
+    login = # login conta wordpress                     
+    senha = # senha wordpress
                             
     dados_maceio = requests.get(f'http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/6809/days/15?token={token}').json()
     dados_tempo = dados_maceio["data"]
@@ -111,7 +109,7 @@ def robo_tempo():
     from wordpress_xmlrpc import Client, WordPressPost
     from wordpress_xmlrpc.methods.posts import GetPosts, NewPost, EditPost
     
-    wp = Client('http://www.agenciatatu.com.br/xmlrpc.php', f'{login}', f'{senha}')
+    wp = Client('http://www.sitewordpress.com.br/xmlrpc.php', f'{login}', f'{senha}') # substituir url do site
 
 
     def atualizar_post():
@@ -122,18 +120,18 @@ def robo_tempo():
                 filter = { 'offset' : offset }
                 p = wp.call(GetPosts(filter))
                 if len(p) == 0:
-                        break  # no more posts returned
+                        break
                 for post in p:
                     if post.title == title:
                         return(post.id)
                 offset = offset + increment
             return(False)
 
-        #newish post
+    # postando matéria final
     post = WordPressPost()
-    post.id = 942
-    post.title = titulo
-    post.content = corpo
+    post.id = XX # substituir XX pelo id do post a ser modificado
+    post.title = titulo # título da matéria
+    post.content = corpo # corpo da matéria
     post.date = datetime.strptime(f'{dia_atual} {mes_atual} {ano_atual}','%d %B %Y')
     post.post_status = 'publish'
     post.terms_names = {
@@ -146,7 +144,7 @@ def robo_tempo():
     else:
         post_id=find_id(post.title)
         if post_id:
-            print("Sorry, we already have such a post(-title):", post_id)
+            print("Ops, algo deu errado", post_id)
         else:
             wp.call(NewPost(post))
 robo_tempo()
