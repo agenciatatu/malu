@@ -98,7 +98,7 @@ def robo_tempo():
     titulo = (f"'{texto_resumido.capitalize()}', indica previsão do tempo para amanhã em Maceió")
 
     lide = (f"A previsão do tempo para a cidade de Maceió para {pronome} {dia_semana}, dia {dia}, indica {textinho.lower()}. A máxima registrada será de {maxima}ºC e a mínima de {minima}ºC. A probabilidade de chuva para amanhã é de {pro_chuva}%.")
-    sublide = ("As informações desta matéria foram coletadas pela nossa robô do tempo <strong>Maju</strong>, de modo automatizado, no Portal Climatempo. Para saber mais sobre a Maju <strong><a href='http://www.agenciatatu.com.br/maju-robo-do-tempo/'>clique aqui</a></strong>.")
+    sublide = ("As informações desta matéria foram coletadas pela nossa robô do tempo <strong>Malu</strong>, de modo automatizado, no Portal Climatempo. Para saber mais sobre a Malu <strong><a href='http://www.agenciatatu.com.br/malu'>clique aqui</a></strong>.")
     corpo = (lide + '\n' + '\n' + sublide)        
     print(titulo)
     print(lide)
